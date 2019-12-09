@@ -7,6 +7,11 @@ use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\Ads;
 use app\models\Addit;
+use app\models\AddForm;
+use app\models\Brand_model_connect;
+use Yii;
+use yii\web\UploadedFile;
+use app\models\UploadForm;
 
 
 class AutoController extends Controller
@@ -22,7 +27,7 @@ class AutoController extends Controller
             ]
         );
 
-        $auto = $query->orderBy('id')
+        $auto = $query->orderBy('id DESC')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -41,14 +46,6 @@ class AutoController extends Controller
         $additions = Addit::find();
         $addit_for_auto = Addit_for_auto::find();
 
-        $pagination = new Pagination(
-            [
-                'defaultPageSize' => 5,
-                'totalCount' => $additions->count(),
-            ]
-        );
-
-
         $additions = $additions->orderBy('id')
             ->all();
 
@@ -65,4 +62,47 @@ class AutoController extends Controller
 
 
     }
+    public function actionAdd()
+    {
+        $m = new AddForm();
+        $mo = new UploadForm();
+        $querry = Brand_model_connect::find();
+        $additions = Addit::find();
+        $BMC = $querry->orderBy('id')->all();
+        $additions = $additions->orderBy('id')->all();
+
+        if ($m->load(Yii::$app->request->post()) && $m->validate()) {
+
+
+
+
+
+
+            if (Yii::$app->request->isPost) {
+                $mo->imageFile = UploadedFile::getInstances($mo, 'imageFile');
+                if ($mo->upload()) {
+
+                    $count = count($mo->imageFile);
+                    return $this->render('add-confirm', ['m' => $m,
+                        'count' => $count,
+                        ]);
+                }
+            }
+        } else {
+
+            return $this->render('add',
+                [
+                    'm' => $m,
+                    'BMC' => $BMC,
+                    'additions' => $additions,
+                    'mo' => $mo,
+                ]
+            );
+        }
+
+    }
+
+
+
+
 }

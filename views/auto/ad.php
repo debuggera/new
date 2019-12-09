@@ -28,7 +28,8 @@ width: 400px;
 }
 </style>
 
-<h1><a href="/web/index.php?r=auto">Авто в продаже</a></h1>
+<h2><a href="/web/index.php?r=auto">Авто в продаже</a></h2>
+<h2><a href="/web/index.php?r=auto/add">Добавить авто</a></h2>
 
 <div class="row" style="padding-top: 5pt">
 
@@ -44,7 +45,7 @@ width: 400px;
                 $img1 = "/web/photos/img/".$id_auto->id."-".$i.".jpg";
                 ?>
                 <a href="#lightbox" data-toggle="modal" data-slide-to=<?=$i-1 ?>>
-                        <img src="<?= $img1?>">
+                        <img src="<?= $img1?>" width="146">
                     </a>
             <?php }   ?>
 

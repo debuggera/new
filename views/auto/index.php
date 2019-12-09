@@ -6,7 +6,8 @@ use yii\widgets\LinkPager;
 ?>
 <link href="ajax.js" style="js">
 
-<h1>Авто в продаже</h1>
+    <h2><a href="/web/index.php?r=auto">Авто в продаже</a></h2>
+    <h2><a href="/web/index.php?r=auto/add">Добавить авто</a></h2>
 
     <?php foreach ($auto as $a):
         $img = "/web/photos/img/".$a->id."-1.jpg";
@@ -16,7 +17,7 @@ use yii\widgets\LinkPager;
 
 
         <div class="row" style="padding-top: 5pt" id="<?= $id?>">
-            <div class="col-md-2"><a class="text-primary" href=<?=$href?>><img src="<?= $img?>"></a></div>
+            <div class="col-md-2"><a class="text-primary" href=<?=$href?>><img src="<?= $img?>" width="146"></a></div>
             <div class="col-md-2">
                 <a class="text-primary" href=<?=$href?>>
                     <?= Html::encode("{$a->brand} {$a->model}") ?>

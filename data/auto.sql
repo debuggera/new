@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 06 2019 г., 17:31
+-- Время создания: Дек 09 2019 г., 03:54
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.1.32
 
@@ -113,6 +113,33 @@ INSERT INTO `ads` (`id`, `brand`, `model`, `mileage`, `additions`, `price`, `pho
 (6, 'BMW', '7 серия', 160000, '', 1150000, '9054568732', 3),
 (7, 'Mercedes', 'C-klasse', 107000, '', 900000, '9058493211', 2);
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `brand_model_connect`
+--
+
+CREATE TABLE `brand_model_connect` (
+  `id` int(11) NOT NULL,
+  `brand` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `brand_model_connect`
+--
+
+INSERT INTO `brand_model_connect` (`id`, `brand`, `model`) VALUES
+(1, 'Audi', 'A4'),
+(2, 'Audi', 'A6'),
+(3, 'Audi', 'A8'),
+(4, 'BMW', '3 серия'),
+(5, 'BMW', '5 серия'),
+(6, 'BMW', '7 серия'),
+(7, 'Mercedes', 'C-klasse'),
+(8, 'Mercedes', 'E-klasse'),
+(9, 'Mercedes', 'S-klasse');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -136,6 +163,12 @@ ALTER TABLE `ads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `brand_model_connect`
+--
+ALTER TABLE `brand_model_connect`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -143,7 +176,7 @@ ALTER TABLE `ads`
 -- AUTO_INCREMENT для таблицы `addit`
 --
 ALTER TABLE `addit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `addit_for_auto`
@@ -155,7 +188,13 @@ ALTER TABLE `addit_for_auto`
 -- AUTO_INCREMENT для таблицы `ads`
 --
 ALTER TABLE `ads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT для таблицы `brand_model_connect`
+--
+ALTER TABLE `brand_model_connect`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
